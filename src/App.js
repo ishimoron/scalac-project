@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+// custom imports
+import React, {Fragment} from 'react';
+import {Switch, Route} from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// my own imports
+import {Navbar} from "./components/Navbar";
+import Home from "./pages/Home";
+import Search from "./pages/Search";
+import Profile from "./pages/Profile";
+
+
+const App = () => {
+    return (
+        <Fragment>
+            <Navbar/>
+            <Switch>
+                <Route exact path="/" component={Home}/>
+                <Route path="/search" component={Search}/>
+                <Route path="/profile/:name" component={Profile}/>
+            </Switch>
+        </Fragment>
+    );
+};
 
 export default App;
